@@ -9,8 +9,13 @@
 
 .textos2{
     font-weight: bold !important;
+    
 }
 
 .btnCancelar{
     margin-right: 20px !important;
+}
+
+.css-md26zr-MuiInputBase-root-MuiOutlinedInput-root {
+    color: black !important;
 }
