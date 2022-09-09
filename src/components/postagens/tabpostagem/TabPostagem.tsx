@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { AppBar, Tab, Tabs, Typography, Box } from '@material-ui/core';
+import { AppBar, Tab, Tabs, Typography, Box } from '@mui/material';
 import { TabContext, TabPanel } from '@material-ui/lab';
 import ListaPostagem from '../listapostagem/ListaPostagem';
 import './TabPostagem.css';
