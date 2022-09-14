@@ -34,13 +34,13 @@ function Home() {
                         <Box marginRight={1}>
                             <ModalPostagem />
                         </Box>
-                        <Link to="/posts" className="text-decorator-none">
+                        <Link to="/postagens" className="text-decorator-none">
                             <Button variant="outlined" className='botao'>Ver Postagens</Button>
                         </Link>
                     </Box>
                 </Grid>
                 <Grid item xs={6} >
-                    <img src="https://i.imgur.com/H88yIo2.png" alt="" width="500px" height="500px" />
+                    <img src="https://i.imgur.com/.png" alt="" width="500px" height="500px" />
                 </Grid>
                 <Grid xs={12} className='postagens'>
                     <TabPostagem />

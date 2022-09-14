@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
+import { Box } from '@mui/material';
 import Postagem from '../../../models/Postagem';
-import { busca } from '../../../services/Service'
-import { Box, Card, CardActions, CardContent, Button, Typography } from '@mui/material';
-import './ListaPostagem.css';
-import { useNavigate } from 'react-router-dom'
+import { busca } from '../../../services/Service';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 
 function ListaPostagem() {
-  const [postagens, setPostagens] = useState<Postagem[]>([])
-  let navigate = useNavigate();
+  const [posts, setPosts] = useState<Postagem[]>([])
   const token = useSelector<TokenState, TokenState["tokens"]>(
     (state) => state.tokens
-  );
+);  
+  let navigate = useNavigate();
 
   useEffect(() => {
     if (token == "") {
@@ -24,7 +23,7 @@ function ListaPostagem() {
   }, [token])
 
   async function getPost() {
-    await busca("/postagens", setPostagens, {
+    await busca("/postagens", setPosts, {
       headers: {
         'Authorization': token
       }
@@ -35,12 +34,12 @@ function ListaPostagem() {
 
     getPost()
 
-  }, [postagens.length])
+  }, [posts.length])
 
   return (
     <>
       {
-        postagens.map(postagens => (
+        posts.map(post => (
           <Box m={2} >
             <Card variant="outlined">
               <CardContent>
@@ -48,26 +47,26 @@ function ListaPostagem() {
                   Postagens
                 </Typography>
                 <Typography variant="h5" component="h2">
-                  {postagens.titulo}
+                  {post.titulo}
                 </Typography>
                 <Typography variant="body2" component="p">
-                  {postagens.texto}
+                  {post.texto}
                 </Typography>
                 <Typography variant="body2" component="p">
-                  {postagens.tema?.descricao}
+                  {post.tema?.descricao}
                 </Typography>
               </CardContent>
               <CardActions>
                 <Box display="flex" justifyContent="center" mb={1.5}>
 
-                  <Link to={`/formularioPostagem/${postagens.id}`} className="text-decorator-none" >
+                  <Link to={`/formularioPostagem/${post.id}`} className="text-decorator-none" >
                     <Box mx={1}>
                       <Button variant="contained" className="marginLeft" size='small' color="primary" >
                         atualizar
                       </Button>
                     </Box>
                   </Link>
-                  <Link to={`/deletarPostagem/${postagens.id}`} className="text-decorator-none">
+                  <Link to={`/deletarPostagem/${post.id}`} className="text-decorator-none">
                     <Box mx={1}>
                       <Button variant="contained" size='small' color="secondary">
                         deletar

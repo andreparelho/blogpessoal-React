@@ -8,7 +8,7 @@ import './CadastroUsuario.css';
 
 function CadastroUsuario() {
 
-    let history = useNavigate();
+    let navigate = useNavigate();
     const [confirmarSenha,setConfirmarSenha] = useState<String>("")
     const [user, setUser] = useState<User>(
         {
@@ -28,7 +28,7 @@ function CadastroUsuario() {
 
     useEffect(() => {
         if (userResult.id != 0) {
-            history('/login')
+            navigate("/login")
         }
     }, [userResult])
 
@@ -48,12 +48,10 @@ function CadastroUsuario() {
     }
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
-        if  (user.senha.length < 8) {
-            alert('Senha menor que 8')
-        } else if(confirmarSenha == user.senha){
+        if(confirmarSenha == user.senha){
         cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
         alert('Usuario cadastrado com sucesso')
-        } else{
+        }else{
             alert('Dados inconsistentes. Favor verificar as informações de cadastro.')
         }
     }

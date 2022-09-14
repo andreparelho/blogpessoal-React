@@ -1,50 +1,87 @@
-import React, { useEffect } from 'react';
-import {Typography, Box, Grid, Button} from '@mui/material';
-import TabPostagem from '../../components/postagens/tabpostagem/TabPostagem';
-import ModalPostagem from '../../components/postagens/modalPostagem/ModalPostagem';
-import './Home.css';
-import { useNavigate } from 'react-router';
-import { useSelector } from 'react-redux';
-import { TokenState } from '../../store/tokens/tokensReducer';
+import React, { ChangeEvent, useState, useEffect} from 'react'
+import './Login.css';
+import { Grid, Box, Typography, TextField, Button} from '@mui/material'
+import { Link, useNavigate } from 'react-router-dom';
+import { login } from '../../services/Service';
+import UserLogin from '../../models/UserLogin';
+import useLocalStorage from 'react-use-localstorage';
+import { addToken } from '../../store/tokens/actions';
+import { useDispatch } from 'react-redux';
 
-function Home() {
+function Login() {
 
-    let navigate = useNavigate();
-    const token = useSelector<TokenState, TokenState["tokens"]>(
-        (state) => state.tokens
-      );
-    
-    useEffect(() => {
-      if (token == "") {
-          alert("Você precisa estar logado")
-          navigate("/login")
-  
-      }
-  }, [token])
+    let history = useNavigate();
+    const dispatch = useDispatch();
+    const [token, setToken] = useState('');
+
+    const [userLogin, setUserLogin] = useState<UserLogin>({
+        id: 0,
+        nome: '',
+        usuario: '',
+        foto: '',
+        senha: '',   
+        token:''
+    })
+
+    function updateModel(e: ChangeEvent<HTMLInputElement>) {
+        setUserLogin({
+            ...userLogin,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    useEffect(()=> {
+        if(token != '') {
+            dispatch(addToken(token));
+            history('/home')
+        }
+    }, [token]) 
+
+    async function onSubmit(e: ChangeEvent<HTMLFormElement>){
+        e.preventDefault();
+        try {
+            await login(`/usuarios/logar`, userLogin, setToken)
+
+            alert('Usuario logado com sucesso!')
+        } catch (error) {
+            alert('ERRO! Login incorreto, tente novamente!')
+        }
+    } 
+
     return (
-        <>
-            <Grid container direction="row" justifyContent="center" alignItems="center" className='caixa'>
-                <Grid alignItems="center" item xs={6}>
-                    <Box paddingX={20} >
-                        <Typography variant="h3" gutterBottom color="textPrimary" component="h3" align="center" className='titulo'>Seja bem vindo(a)!</Typography>
-                        <Typography variant="h5" gutterBottom color="textPrimary" component="h5" align="center" className='titulo'>expresse aqui os seus pensamentos e opiniões!</Typography>
-                    </Box>
-                    <Box display="flex" justifyContent="center">
-                        <Box marginRight={1}>
-                            <ModalPostagem />
+        <><Grid className="container">
+            <Box className="container-login">
+                <Box className="wrap-login">
+                    <form onSubmit={onSubmit}>
+                        <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center' className='login-form-title'>Login</Typography>
+
+                        <div className="wrap-input">
+                            <TextField value={userLogin.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id='usuario' label='e-mail' variant='outlined' name='usuario' margin='normal' fullWidth />
+                            <span className="focus-input" data-placeholder=""></span>
+                        </div>
+
+                        <div className="wrap-input">
+                            <TextField value={userLogin.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id='senha' label='senha' variant='outlined' name='senha' margin='normal' type='password' fullWidth />
+                            <span className="focus-input" data-placeholder=""></span>
+                        </div>
+
+
+                        <Box className="container-login-form-btn">
+                            <Button className="login-form-btn" type='submit' variant='contained'>
+                                Logar
+                            </Button>
                         </Box>
-                        <Button variant="outlined" className='botao'>Ver Postagens</Button>
+                    </form>
+
+
+                    <Box className="text-center">
+                        <Typography className="txt1" variant='subtitle1'>Não possui uma conta? </Typography><Link to='/cadastrousuario'><Typography className="txt2" variant='subtitle1'>    Cadastre-se</Typography> </Link>
                     </Box>
-                </Grid>
-                <Grid item xs={6} >
-                    <img src="https://i.imgur.com/H88yIo2.png" alt="" width="500px" height="500px" />
-                </Grid>
-                <Grid xs={12} className='postagens'>
-                    <TabPostagem />
-                </Grid>
-            </Grid>
-        </>
+                </Box>
+            </Box>
+        </Grid><Grid xs={6} className='imagem'>
+            </Grid></>
     );
 }
 
-export default Home;
+export default Login;

@@ -1,14 +1,14 @@
 .container {
     width: 100% !important;
-    background: rgb(63,94,251) !important;
-    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,252,238,0.9878682842287695) 100%) !important;
+    background: rgb(63, 94, 251) !important;
+    background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(70, 252, 238, 0.9878682842287695) 100%) !important;
 
 }
 
 
 .container-login {
     width: 100% !important;
-    
+
 
     display: flex !important;
     flex-wrap: wrap !important;
@@ -28,23 +28,24 @@
 .wrap-login {
     width: 390px !important;
 
-    
+
     border-radius: 10px !important;
     border-top-left-radius: 0%;
 
     overflow: hidden !important;
     padding: 77px 55px 33px 55px !important;
-    
 
-background: rgba(6, 20, 104, 0.25);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(12.9px);
--webkit-backdrop-filter: blur(12.9px);
-border: 1px solid rgba(6, 20, 104, 0.08);
 
-   
+    background: rgba(255, 255, 255, 0.387);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12.9px);
+    -webkit-backdrop-filter: blur(12.9px);
+    border: 1px solid rgba(6, 20, 104, 0.08);
+
+
 }
+
 
 .login-form {
     width: 100% !important;
@@ -58,7 +59,7 @@ border: 1px solid rgba(6, 20, 104, 0.08);
     line-height: 1.2 !important;
     text-align: center !important;
 
-    
+
 }
 
 
@@ -66,9 +67,8 @@ border: 1px solid rgba(6, 20, 104, 0.08);
 
     width: 100% !important;
     position: relative !important;
-    border-bottom:  2px solid white !important;
-    margin-bottom: 37px !important;
-    
+    margin-bottom: 10px !important;
+
 }
 
 
@@ -90,42 +90,11 @@ border: 1px solid rgba(6, 20, 104, 0.08);
     
 } */
 
-/* .focus-input {
-    position: absolute !important;
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
 
-    top: 0 !important;
-    left: 0 !important;
-
-    pointer-events: none !important;
-    color:white !important;
-} */
 
 .css-md26zr-MuiInputBase-root-MuiOutlinedInput-root {
-    
-    color: white !important;
-}
 
-.focus-input::before {
-    content: "" !important;
-    display: block !important;
-
-    position: absolute !important;
-    bottom: -2px !important;
-    left: 0 !important;
-    width: 0 !important;
-    height: 2px !important;
-
-    -webkit-transition: all 0.4s !important;
-    -o-transition: all 0.4s !important;
-    -moz-transition: all 0.4s!important;
-
-    background: -webkit-linear-gradient(to left, #21d4fd, #b721ff) !important;
-    background: -o-linear-gradient(to left, #21d4fd, #b721ff) !important;
-    background: -moz-linear-gradient(to left, #21d4fd, #b721ff) !important;
-    background: linear-gradient(to left, #21d4fd, #b721ff) !important;
+    color: rgb(0, 0, 0) !important;
 }
 
 .focus-input::after {
@@ -143,20 +112,40 @@ border: 1px solid rgba(6, 20, 104, 0.08);
 
     -webkit-transition: all 0.4s !important;
     -o-transition: all 0.4s !important;
-    -moz-transition: all 0.4s!important;
+    -moz-transition: all 0.4s !important;
+}
+
+.focus-input::before {
+    content: "" !important;
+    display: block !important;
+
+    position: absolute !important;
+    bottom: -2px !important;
+    left: 0 !important;
+    width: 0 !important;
+    height: 2px !important;
+
+    -webkit-transition: all 0.4s !important;
+    -o-transition: all 0.4s !important;
+    -moz-transition: all 0.4s !important;
+
+    background: -webkit-linear-gradient(to left, #21d4fd, #b721ff) !important;
+    background: -o-linear-gradient(to left, #21d4fd, #b721ff) !important;
+    background: -moz-linear-gradient(to left, #21d4fd, #b721ff) !important;
+    background: linear-gradient(to left, #21d4fd, #b721ff) !important;
 }
 
 .input:focus {
     outline: 0 !important;
 }
 
-.input:focus + .focus-input::after {
+.input:focus+.focus-input::after {
     top: -15px !important;
 }
 
 
-.input:focus + .focus-input::before {
-    width: 100% !important; 
+.input:focus+.focus-input::before {
+    width: 100% !important;
 }
 
 .container-login-form-btn {
@@ -180,7 +169,7 @@ border: 1px solid rgba(6, 20, 104, 0.08);
     justify-content: center;
     align-items: center;
 
-    width: 100%;
+    width: 50%;
     height: 50px;
 
     background: -webkit-linear-gradient(to left, #21d4fd, #b721ff);
@@ -190,13 +179,13 @@ border: 1px solid rgba(6, 20, 104, 0.08);
 }
 
 .login-form-btn:hover {
-    cursor: pointer;
+    cursor: pointer !important;
 }
 
 .text-center {
-    display: flex;
-    justify-content: center;
-    
+    display: flex !important;
+    justify-content: center !important;
+
 }
 
 .txt1 {
@@ -205,7 +194,9 @@ border: 1px solid rgba(6, 20, 104, 0.08);
     line-height: 1.5;
     padding-right: 5px;
     text-decoration: none;
-    
+    display: flex !important;
+    justify-content: center !important;
+
 }
 
 .txt2 {
@@ -213,7 +204,7 @@ border: 1px solid rgba(6, 20, 104, 0.08);
     color: black;
     line-height: 1.5;
     font-weight: bold !important;
-    
+
 }
 
 
