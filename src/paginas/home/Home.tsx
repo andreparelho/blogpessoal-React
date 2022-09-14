@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import {Typography, Box, Grid, Button} from '@mui/material';
 import TabPostagem from '../../components/postagens/tabpostagem/TabPostagem';
 import ModalPostagem from '../../components/postagens/modalPostagem/ModalPostagem';
 import './Home.css';
@@ -6,7 +7,7 @@ import { useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../store/tokens/tokensReducer';
 import { Link } from 'react-router-dom';
-import { Grid, Box, Typography, Button  } from '@mui/material';
+import { toast } from 'react-toastify';
 
 function Home() {
 
@@ -17,8 +18,17 @@ function Home() {
     
     useEffect(() => {
       if (token == "") {
-          alert("Você precisa estar logado")
-          navigate("/login")
+        toast.error('Você precisa estar logado', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            theme: "colored",
+            progress: undefined,
+        });
+        navigate("/login")
   
       }
   }, [token])
@@ -34,13 +44,13 @@ function Home() {
                         <Box marginRight={1}>
                             <ModalPostagem />
                         </Box>
-                        <Link to="/postagens" className="text-decorator-none">
+                        <Link to="/posts" className="text-decorator-none">
                             <Button variant="outlined" className='botao'>Ver Postagens</Button>
                         </Link>
                     </Box>
                 </Grid>
                 <Grid item xs={6} >
-                    <img src="https://i.imgur.com/.png" alt="" width="500px" height="500px" />
+                    <img src="https://i.imgur.com/H88yIo2.png" alt="" width="500px" height="500px" />
                 </Grid>
                 <Grid xs={12} className='postagens'>
                     <TabPostagem />

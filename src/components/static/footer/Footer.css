@@ -1,18 +1,5 @@
-.box1 {
-    background-color: #3F51B5;
-    height: 120px; 
-}
-
-.box2 {
-    background-color: #303F9F;
-    height: 60px;
-}
-
-.redes {
-    font-size: 60px;
-    color: white;
-}
-
-.textos {
-    color: white;
+.footer {
+    height: 35px !important;
+    /*background: radial-gradient(circle, rgb(102, 230, 219) 0%, rgba(152, 136, 238, 0.988) 100%) !important;*/
+    background: rgba(0, 0, 0, 0.667);
 }

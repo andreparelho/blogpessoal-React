@@ -1,7 +1,8 @@
 .container {
     width: 100% !important;
-    background: rgb(63, 94, 251) !important;
-    background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(70, 252, 238, 0.9878682842287695) 100%) !important;
+    background: #a3de83;
+    /* background: rgb(63, 94, 251) !important; */
+    /* background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(70, 252, 238, 0.9878682842287695) 100%) !important; */
 
 }
 
@@ -36,7 +37,7 @@
     padding: 77px 55px 33px 55px !important;
 
 
-    background: rgba(255, 255, 255, 0.387);
+    background: rgba(0, 0, 0, 0.589);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(12.9px);
@@ -172,10 +173,12 @@
     width: 50%;
     height: 50px;
 
-    background: -webkit-linear-gradient(to left, #21d4fd, #b721ff);
+    background-color: #a9c52f !important;
+
+    /*background: -webkit-linear-gradient(to left, #21d4fd, #b721ff);
     background: -o-linear-gradient(to left, #21d4fd, #b721ff);
     background: -moz-linear-gradient(to left, #21d4fd, #b721ff);
-    background: linear-gradient(to left, #21d4fd, #b721ff);
+    background: linear-gradient(to left, #21d4fd, #b721ff);*/
 }
 
 .login-form-btn:hover {
