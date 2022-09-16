@@ -1,5 +1,5 @@
 .footer {
     height: 35px !important;
-    /*background: radial-gradient(circle, rgb(102, 230, 219) 0%, rgba(152, 136, 238, 0.988) 100%) !important;*/
-    background: rgba(0, 0, 0, 0.667);
+    background-color: rgba(0, 0, 0, .3);
+   
 }

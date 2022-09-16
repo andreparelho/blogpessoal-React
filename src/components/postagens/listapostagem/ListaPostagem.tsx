@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 
 function ListaPostagem() {
-  const [posts, setPosts] = useState<Postagem[]>([])
+  const [postagens, setPostagens] = useState<Postagem[]>([])
   const token = useSelector<TokenState, TokenState["tokens"]>(
     (state) => state.tokens
 );  
@@ -23,7 +23,7 @@ function ListaPostagem() {
   }, [token])
 
   async function getPost() {
-    await busca("/postagens", setPosts, {
+    await busca("/postagens", setPostagens, {
       headers: {
         'Authorization': token
       }
@@ -34,12 +34,12 @@ function ListaPostagem() {
 
     getPost()
 
-  }, [posts.length])
+  }, [postagens.length])
 
   return (
     <>
       {
-        posts.map(post => (
+        postagens.map(post => (
           <Box m={2} >
             <Card variant="outlined">
               <CardContent>
