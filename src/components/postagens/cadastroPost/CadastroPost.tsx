@@ -89,38 +89,79 @@ function CadastroPost() {
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
 
+        // Se o ID for diferente de indefinido tente Atualizar
         if (id !== undefined) {
-            put(`/postagens`, postagem, setPostagem, {
-                headers: {
-                    'Authorization': token
-                }
-            })
-            toast.success('Postagem atualizada com sucesso', {
-                position: "top-right",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                theme: "colored",
-                progress: undefined,
-            });
+
+            // TRY: Tenta executar a atualização 
+            try {
+                await put(`/postagens`, postagem, setPostagem, {
+                    headers: {
+                        'Authorization': token
+                    }
+                })
+
+                toast.success('Postagem atualizada com sucesso', {
+                    position: 'top-right',
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: true,
+                    theme: 'colored',
+                    progress: undefined,
+                  })
+
+                // CATCH: Caso tenha algum erro, pegue esse erro e mande uma msg para o usuário
+            } catch (error) {
+                console.log(`Error: ${error}`)
+                toast.warning('Erro, por favor verifique a quantidade minima de caracteres', {
+                    position: 'top-right',
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: true,
+                    theme: 'colored',
+                    progress: undefined,
+                  })
+            }
+
+            // Se o ID for indefinido, tente Cadastrar
         } else {
-            post(`/postagens`, postagem, setPostagem, {
-                headers: {
-                    'Authorization': token
-                }
-            })
-            toast.success('Postagem cadastrada com sucesso', {
-                position: "top-right",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                theme: "colored",
-                progress: undefined,
-            });
+
+            // TRY: Tenta executar o cadastro
+            try {
+                await post(`/postagens`, postagem, setPostagem, {
+                    headers: {
+                        'Authorization': token
+                    }
+                })
+
+                toast.success('Postagem cadastrada com sucesso', {
+                    position: 'top-right',
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: true,
+                    theme: 'colored',
+                    progress: undefined,
+                  })
+
+                // CATCH: Caso tenha algum erro, pegue esse erro e mande uma msg para o usuário
+            } catch (error) {
+                console.log(`Error: ${error}`)
+                toast.warning('Erro, por favor verifique a quantidade minima de caracteres', {
+                    position: 'top-right',
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: true,
+                    theme: 'colored',
+                    progress: undefined,
+                  })
+            }
         }
         back()
 
